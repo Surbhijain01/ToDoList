@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+
+    }
+
+    body {
+        background-image: url(image.jpg);
+        object-fit: fill;
+
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul li {
+        cursor: pointer;
+        padding: 20px;
+        background: #4287317a;
+        font-weight: 700;
+        font-size: 20px;
+        transition: 0.2s;
+        margin-left: 5%;
+        margin-right: 5%;
+        border: 2px solid gray;
+        border-radius: 20px;
+    }
+
+    ul li:hover {
+        background: #c2c0c092;
+        
+    }
+
+    .inputcontainer {
+
+     /* background-color: #f43636b8; */
+        padding: 50px 50px;
+        color: white;
+        text-align: center;
+    }
+
+    input {
+        margin: 0;
+        border-radius: 10px;
+        width: 75%;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .inputcontainer h2 {
+        text-shadow: 3px 3px 5px #235605;
+        font-size: 37px;
+        font-weight: 900;
+    }
+
+    .fa-trash {
+        margin-left: 90%;
+        margin-right: 10%;
+
+    }
+</style>
+
+<body>
+    <div class="inputcontainer">
+        <h2>To Do List</h2>
+        <input id="inputbar" placeholder="Title..........." value="">
+        
+    </div>
+
+
+    <ul id="ullist">
+        <!-- <li>lets make our js project <span> <i class="fa fa-trash"></i></span></li> -->
+    </ul>
+    
+
+
+</body>
+<script>
+    let inputField = document.querySelector("#inputbar");
+
+    let list = document.querySelector("#ullist");
+
+    inputField.addEventListener("keydown", function (event) {
+
+        // console.log("input fields event called");
+        // console.log(event.key);
+        // console.log(inputField.value);
+
+        if (event.key == "Enter" && inputField.value != '' ) {
+            let newitem = document.createElement("li");
+
+            newitem.innerHTML = inputField.value + '<span> <i class="fa fa-trash"></i></span>';
+
+
+            let deleteicon = newitem.querySelector("span");
+
+            deleteicon.addEventListener("dblclick", function () {
+
+                newitem.remove();
+            })
+            list.appendChild(newitem);
+            inputField.value = "";
+        }
+    })
+
+</script>
+
+</html>
